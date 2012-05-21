@@ -36,7 +36,7 @@ module BootstrapHelper
   #
   def error_notification(form)
     if form.error_notification
-      alert :error, :close=>true do
+      show_alert :error, :close=>true do
         form.error_notification
       end
     end
@@ -62,7 +62,7 @@ module BootstrapHelper
   # = alert :close=>true, :block=>true do
   # Можно и так, без типа
 
-  def alert type_or_options=nil, options={}, &block
+  def show_alert type_or_options=nil, options={}, &block
     alert_classes = ['alert']
 
     if type_or_options.is_a?(Hash)
@@ -84,7 +84,7 @@ module BootstrapHelper
   def show_flashes
     flashes=''
     flash.each do |type,content|
-      flashes << alert(type, :close=>true) do
+      flashes << show_alert(type, :close=>true) do
         content
       end
     end
