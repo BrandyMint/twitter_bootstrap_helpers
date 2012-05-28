@@ -1,18 +1,19 @@
 # encoding: utf-8
 
+include ::ActionView::Helpers::TagHelper
+
 module TwitterBootstrap
 
   class ButtonGroupBuilder
-    def initialize(type, view_context)
-      @type = type
+    def initialize(id,view_context)
+      @id = id
       @view_context = view_context
-
       @buttons = ""
     end
 
     def build(block)
       block.call(self)
-      @view_context.content_tag(:div, @buttons.html_safe, class: 'btn-group', data: {toggle: "buttons-#{@type}"})
+      @view_context.content_tag(:div, @buttons.html_safe, class: 'btn-group',id: @id);
     end
 
     def button(label, options = {})
@@ -29,6 +30,13 @@ module TwitterBootstrap
       @buttons << @view_context.content_tag(:button, label, class: button_class, data: data)
 
       ""
+    end
+
+    def dropdown_button(item_title,dropdown_menu)
+      title = (item_title << ' ' << content_tag(:span, nil, class: 'caret')).html_safe
+      link  = content_tag(:a, title, :href => '#', :class => 'btn btn-mini dropdown-toggle', 'data-toggle' => 'dropdown')
+
+      @buttons << (link << dropdown_menu) 
     end
   end
 
