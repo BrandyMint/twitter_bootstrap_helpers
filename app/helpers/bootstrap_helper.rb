@@ -135,5 +135,43 @@ module BootstrapHelper
     builder = TwitterBootstrap::ButtonGroupWithTabsBuilder.new(self)
     builder.build(block)
   end
+  
+  # Вывод кнопки с иконкой, можно и без иконки
+  def button(text, url = nil, options = {})
+    # ОПЦИИ
+    # :color        цвет кнопки, может быть пустым, 
+    #               :red, :blue, :green, :yellow, :black, либо согласно bootstrap (напр. :primary)
+    #
+    # :icon         имя иконки, символ или строка. если nil - иконки нет.
+    #               список здесь: http://twitter.github.com/bootstrap/base-css.html#icons
+    #
+    # :icon_color   в идеале - не используется, цвет иконки выбирается автоматически, если :color задан корректно. 
+    #               если нет, заменяет цвет иконки. может быть :white.
+    #
+    # другие параметры передаются напрямую хелперу link_to, можно использовать их        
+    # 
+    # ПРИМЕР
+    # button 'Обновить', items_path, color: :blue, icon: :refresh, remote: true
+    #
+    # !!!ВАЖНО!!!
+    # не вставлять в text пользовательский текст, он может содержать вредоносный код, вызывается html_safe
+    button_class = case options[:color]
+      when nil     then 'btn'
+      when :red    then 'btn btn-danger'
+      when :blue   then 'btn btn-primary'
+      when :green  then 'btn btn-success'
+      when :yellow then 'btn btn-warning'
+      when :black  then 'btn btn-inverse'
+      else              'btn btn-'+options[:color].to_s
+    end
+    if options[:icon]
+      icon = '<i class="icon'+('-white' if options[:icon_color].to_s == "white" || [:red, :blue, :green, :black].include?(options[:color])).to_s+' icon-'+options[:icon].to_s+'"> </i> '
+      text = icon+text
+    end
+    options.delete_if{|k,v|[:color, :icon, :icon_color].include?(k)}
+    options[:class] = button_class
+    # если кто-то сильно против тега A и хочет BUTTON - можно сделать, но будет адский костыль.
+    link_to text.html_safe, url, options 
+  end
 
 end
