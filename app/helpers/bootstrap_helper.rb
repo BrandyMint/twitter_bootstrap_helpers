@@ -114,8 +114,8 @@ module BootstrapHelper
   #     = g.button('Home')
   #     = g.button('Posts')
   #
-  def button_group(type, &block)
-    builder = TwitterBootstrap::ButtonGroupBuilder.new(type, self)
+  def button_group(id,&block)
+    builder = TwitterBootstrap::ButtonGroupBuilder.new(id,self)
     builder.build(block)
   end
 
