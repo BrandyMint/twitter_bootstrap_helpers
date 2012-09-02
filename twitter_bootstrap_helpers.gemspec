@@ -5,24 +5,22 @@
 
 Gem::Specification.new do |s|
   s.name = "twitter_bootstrap_helpers"
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Danil Pismenny"]
-  s.date = "2012-05-21"
+  s.date = "2012-09-02"
   s.description = "\u{425}\u{435}\u{43b}\u{43f}\u{435}\u{440}\u{44b} \u{434}\u{43b}\u{44f} Twitter Bootstrap"
   s.email = "danil@orionet.ru"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.md",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
     "README.md",
-    "README.rdoc",
     "Rakefile",
     "VERSION",
     "app/helpers/bootstrap_helper.rb",
@@ -30,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/twitter_bootstrap_helpers/button_group_builder.rb",
     "lib/twitter_bootstrap_helpers/engine.rb",
     "lib/twitter_bootstrap_helpers/tabs_generator.rb",
+    "pkg/twitter_bootstrap_helpers-0.1.0.gem",
     "test/helper.rb",
     "test/test_twitter_bootstrap_helpers.rb",
     "twitter_bootstrap_helpers.gemspec",
