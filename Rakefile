@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "twitter_bootstrap_helpers"
   gem.homepage = "http://github.com/dapi/twitter_bootstrap_helpers"
   gem.license = "MIT"
-  gem.summary = %Q{Хелперы для Twitter Bootstrap}
-  gem.description = %Q{Хелперы для Twitter Bootstrap}
+  gem.summary = %Q{Helpers for Twitter Bootstrap}
+  gem.description = %Q{Helpers for Twitter Bootstrap}
   gem.email = "danil@orionet.ru"
   gem.authors = ["Danil Pismenny"]
   # dependencies defined in Gemfile
